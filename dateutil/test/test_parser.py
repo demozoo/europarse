@@ -777,3 +777,10 @@ class ParserTest(unittest.TestCase):
         self.assertEqual(parse(pstring),
                          datetime(1924, 8, 29))
 
+    def testYMDWithDayFirst(self):
+        self.assertEqual(parse('2022-04-08', dayfirst=True),
+                         datetime(2022, 4, 8))
+
+    def testInvalidNumericDate(self):
+        with self.assertRaises(ValueError):
+            parse("1991-93", dayfirst=True)
