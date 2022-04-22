@@ -7,7 +7,7 @@ import io
 from six.moves.urllib import request
 from six.moves.urllib import error as urllib_error
 
-from dateutil.zoneinfo import rebuild
+from europarse.zoneinfo import rebuild
 
 METADATA_FILE = "zonefile_metadata.json"
 

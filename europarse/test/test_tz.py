@@ -13,14 +13,14 @@ import time as _time
 import base64
 IS_WIN = sys.platform.startswith('win')
 
-# dateutil imports
-from dateutil.relativedelta import relativedelta
-from dateutil.parser import parse
-from dateutil import tz as tz
-from dateutil import zoneinfo
+# europarse imports
+from europarse.relativedelta import relativedelta
+from europarse.parser import parse
+from europarse import tz as tz
+from europarse import zoneinfo
 
 try:
-    from dateutil import tzwin
+    from europarse import tzwin
 except ImportError as e:
     if IS_WIN:
         raise e
@@ -223,7 +223,7 @@ class TZTest(unittest.TestCase):
                          tz.tzstr("EST5EDT,4,1,0,7200,10,-1,0,7200,3600"))
 
     def testRangeCmp1(self):
-        from dateutil.relativedelta import SU
+        from europarse.relativedelta import SU
         self.assertEqual(tz.tzstr("EST5EDT"),
                          tz.tzrange("EST", -18000, "EDT", -14400,
                                  relativedelta(hours=+2,

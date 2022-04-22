@@ -301,7 +301,7 @@ class relativedelta(object):
         relativedelta(days=1, hours=14)
         
         :return:
-            Returns a :class:`dateutil.relativedelta.relativedelta` object.
+            Returns a :class:`europarse.relativedelta.relativedelta` object.
         """
         # Cascade remainders down (rounding each to roughly nearest microsecond)
         days = int(self.days)

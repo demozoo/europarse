@@ -13,23 +13,23 @@ if isfile("MANIFEST"):
 
 TOPDIR = os.path.dirname(__file__) or "."
 VERSION = re.search('__version__ = "([^"]+)"',
-                    codecs.open(TOPDIR + "/dateutil/__init__.py",
+                    codecs.open(TOPDIR + "/europarse/__init__.py",
                                 encoding='utf-8').read()).group(1)
 
 
-setup(name="python-dateutil",
+setup(name="europarse",
       version=VERSION,
-      description="Extensions to the standard Python datetime module",
-      author="Paul Ganssle, Yaron de Leeuw",
-      author_email="dateutil@python.org",
-      url="https://dateutil.readthedocs.org",
+      description="dateutil.parser, but not broken",
+      author="Matt Westcott",
+      author_email="matt@west.co.tt",
+      url="https://github.com/demozoo/europarse",
       license="Simplified BSD",
       long_description="""
-The dateutil module provides powerful extensions to the
-datetime module available in the Python standard library.
+A fork of dateutil.parser from before it broke the semantics of the
+'dayfirst' argument to treat ISO dates as YYYY-DD-MM.
 """,
-      packages=["dateutil", "dateutil.zoneinfo", "dateutil.tz"],
-      package_data={"dateutil.zoneinfo": ["dateutil-zoneinfo.tar.gz"]},
+      packages=["europarse", "europarse.zoneinfo", "europarse.tz"],
+      package_data={"europarse.zoneinfo": ["europarse-zoneinfo.tar.gz"]},
       zip_safe=True,
       requires=["six"],
       install_requires=["six >=1.5"],  # XXX fix when packaging is sane again
@@ -48,5 +48,5 @@ datetime module available in the Python standard library.
           'Programming Language :: Python :: 3.5',
           'Topic :: Software Development :: Libraries',
       ],
-      test_suite="dateutil.test"
+      test_suite="europarse.test"
       )

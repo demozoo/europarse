@@ -341,7 +341,7 @@ class rrule(rrulebase):
         This can lead to possibly surprising behavior when, for example, the
         start date occurs at the end of the month:
 
-        >>> from dateutil.rrule import rrule, MONTHLY
+        >>> from europarse.rrule import rrule, MONTHLY
         >>> from datetime import datetime
         >>> start_date = datetime(2014, 12, 31)
         >>> list(rrule(freq=MONTHLY, count=4, dtstart=start_date))
@@ -533,7 +533,7 @@ class rrule(rrulebase):
         # byeaster
         if byeaster is not None:
             if not easter:
-                from dateutil import easter
+                from europarse import easter
             if isinstance(byeaster, integer_types):
                 self._byeaster = (byeaster,)
             else:
@@ -1427,7 +1427,7 @@ class _rrulestr(object):
     def _handle_UNTIL(self, rrkwargs, name, value, **kwargs):
         global parser
         if not parser:
-            from dateutil import parser
+            from europarse import parser
         try:
             rrkwargs["until"] = parser.parse(value,
                                              ignoretz=kwargs.get("ignoretz"),
@@ -1566,7 +1566,7 @@ class _rrulestr(object):
                     for parm in parms:
                         raise ValueError("unsupported DTSTART parm: "+parm)
                     if not parser:
-                        from dateutil import parser
+                        from europarse import parser
                     dtstart = parser.parse(value, ignoretz=ignoretz,
                                            tzinfos=tzinfos)
                 else:
@@ -1574,7 +1574,7 @@ class _rrulestr(object):
             if (forceset or len(rrulevals) > 1 or rdatevals
                     or exrulevals or exdatevals):
                 if not parser and (rdatevals or exdatevals):
-                    from dateutil import parser
+                    from europarse import parser
                 rset = rruleset(cache=cache)
                 for value in rrulevals:
                     rset.rrule(self._parse_rfc_rrule(value, dtstart=dtstart,

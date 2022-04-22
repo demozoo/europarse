@@ -6,7 +6,7 @@ import calendar
 from datetime import datetime, date
 from six import PY3
 
-from dateutil.rrule import *
+from europarse.rrule import *
 
 
 class RRuleTest(WarningTestMixin, unittest.TestCase):
@@ -4621,7 +4621,7 @@ class WeekdayTest(unittest.TestCase):
     def testWeekdayCallable(self):
         # Calling a weekday instance generates a new weekday instance with the
         # value of n changed.
-        from dateutil.rrule import weekday
+        from europarse.rrule import weekday
         self.assertEqual(MO(1), weekday(0, 1))
 
         # Calling a weekday instance with the identical n returns the original

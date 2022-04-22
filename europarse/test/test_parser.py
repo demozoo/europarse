@@ -4,8 +4,8 @@ from ._common import unittest
 
 from datetime import datetime, timedelta, date
 
-from dateutil.tz import tzoffset
-from dateutil.parser import *
+from europarse.tz import tzoffset
+from europarse.parser import *
 
 from six import assertRaisesRegex, PY3
 
@@ -729,7 +729,7 @@ class ParserTest(unittest.TestCase):
 
     def testCustomParserInfo(self):
         # Custom parser info wasn't working, as Michael Elsdörfer discovered.
-        from dateutil.parser import parserinfo, parser
+        from europarse.parser import parserinfo, parser
 
         class myparserinfo(parserinfo):
             MONTHS = parserinfo.MONTHS[:]
@@ -743,7 +743,7 @@ class ParserTest(unittest.TestCase):
                          parse(self.uni_str))
 
     def testParserParseStr(self):
-        from dateutil.parser import parser
+        from europarse.parser import parser
 
         self.assertEqual(parser().parse(self.str_str),
                          parser().parse(self.uni_str))

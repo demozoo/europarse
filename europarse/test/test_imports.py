@@ -7,73 +7,73 @@ except ImportError:
 
 
 class ImportEasterTest(unittest.TestCase):
-    """ Test that dateutil.easter-related imports work properly """
+    """ Test that europarse.easter-related imports work properly """
 
     def testEasterDirect(self):
-        import dateutil.easter
+        import europarse.easter
 
     def testEasterFrom(self):
-        from dateutil import easter
+        from europarse import easter
 
     def testEasterStar(self):
-        from dateutil.easter import easter
+        from europarse.easter import easter
 
 
 class ImportParserTest(unittest.TestCase):
-    """ Test that dateutil.parser-related imports work properly """
+    """ Test that europarse.parser-related imports work properly """
     def testParserDirect(self):
-        import dateutil.parser
+        import europarse.parser
 
     def testParserFrom(self):
-        from dateutil import parser
+        from europarse import parser
 
     def testParserAll(self):
         # All interface
-        from dateutil.parser import parse
-        from dateutil.parser import parserinfo
+        from europarse.parser import parse
+        from europarse.parser import parserinfo
 
         # Other public classes
-        from dateutil.parser import parser
+        from europarse.parser import parser
 
         for var in (parse, parserinfo, parser):
             self.assertIsNot(var, None)
 
 
 class ImportRelativeDeltaTest(unittest.TestCase):
-    """ Test that dateutil.relativedelta-related imports work properly """
+    """ Test that europarse.relativedelta-related imports work properly """
     def testRelativeDeltaDirect(self):
-        import dateutil.relativedelta
+        import europarse.relativedelta
 
     def testRelativeDeltaFrom(self):
-        from dateutil import relativedelta
+        from europarse import relativedelta
 
     def testRelativeDeltaAll(self):
-        from dateutil.relativedelta import relativedelta
-        from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
+        from europarse.relativedelta import relativedelta
+        from europarse.relativedelta import MO, TU, WE, TH, FR, SA, SU
 
         for var in (relativedelta, MO, TU, WE, TH, FR, SA, SU):
             self.assertIsNot(var, None)
 
         # In the public interface but not in all
-        from dateutil.relativedelta import weekday
+        from europarse.relativedelta import weekday
         self.assertIsNot(weekday, None)
 
 
 class ImportRRuleTest(unittest.TestCase):
-    """ Test that dateutil.rrule related imports work properly """
+    """ Test that europarse.rrule related imports work properly """
     def testRRuleDirect(self):
-        import dateutil.rrule
+        import europarse.rrule
 
     def testRRuleFrom(self):
-        from dateutil import rrule
+        from europarse import rrule
 
     def testRRuleAll(self):
-        from dateutil.rrule import rrule
-        from dateutil.rrule import rruleset
-        from dateutil.rrule import rrulestr
-        from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
-        from dateutil.rrule import HOURLY, MINUTELY, SECONDLY
-        from dateutil.rrule import MO, TU, WE, TH, FR, SA, SU
+        from europarse.rrule import rrule
+        from europarse.rrule import rruleset
+        from europarse.rrule import rrulestr
+        from europarse.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
+        from europarse.rrule import HOURLY, MINUTELY, SECONDLY
+        from europarse.rrule import MO, TU, WE, TH, FR, SA, SU
 
         rr_all = (rrule, rruleset, rrulestr,
                   YEARLY, MONTHLY, WEEKLY, DAILY,
@@ -84,29 +84,29 @@ class ImportRRuleTest(unittest.TestCase):
             self.assertIsNot(var, None)
 
         # In the public interface but not in all
-        from dateutil.rrule import weekday
+        from europarse.rrule import weekday
         self.assertIsNot(weekday, None)
 
 
 class ImportTZTest(unittest.TestCase):
-    """ Test that dateutil.tz related imports work properly """
+    """ Test that europarse.tz related imports work properly """
     def testTzDirect(self):
-        import dateutil.tz
+        import europarse.tz
 
     def testTzFrom(self):
-        from dateutil import tz
+        from europarse import tz
 
     def testTzAll(self):
-        from dateutil.tz import tzutc
-        from dateutil.tz import tzoffset
-        from dateutil.tz import tzlocal
-        from dateutil.tz import tzfile
-        from dateutil.tz import tzrange
-        from dateutil.tz import tzstr
-        from dateutil.tz import tzical
-        from dateutil.tz import gettz
-        from dateutil.tz import tzwin
-        from dateutil.tz import tzwinlocal
+        from europarse.tz import tzutc
+        from europarse.tz import tzoffset
+        from europarse.tz import tzlocal
+        from europarse.tz import tzfile
+        from europarse.tz import tzrange
+        from europarse.tz import tzstr
+        from europarse.tz import tzical
+        from europarse.tz import gettz
+        from europarse.tz import tzwin
+        from europarse.tz import tzwinlocal
 
         tz_all = ["tzutc", "tzoffset", "tzlocal", "tzfile", "tzrange",
                   "tzstr", "tzical", "gettz"]
@@ -120,12 +120,12 @@ class ImportTZTest(unittest.TestCase):
 
 @unittest.skipUnless(sys.platform.startswith('win'), "Requires Windows")
 class ImportTZWinTest(unittest.TestCase):
-    """ Test that dateutil.tzwin related imports work properly """
+    """ Test that europarse.tzwin related imports work properly """
     def testTzwinDirect(self):
-        import dateutil.tzwin
+        import europarse.tzwin
 
     def testTzwinFrom(self):
-        from dateutil import tzwin
+        from europarse import tzwin
 
     def testTzwinStar(self):
         tzwin_all = ["tzwin", "tzwinlocal"]
@@ -133,15 +133,15 @@ class ImportTZWinTest(unittest.TestCase):
 
 class ImportZoneInfoTest(unittest.TestCase):
     def testZoneinfoDirect(self):
-        import dateutil.zoneinfo
+        import europarse.zoneinfo
 
     def testZoneinfoFrom(self):
-        from dateutil import zoneinfo
+        from europarse import zoneinfo
 
     def testZoneinfoStar(self):
-        from dateutil.zoneinfo import gettz
-        from dateutil.zoneinfo import gettz_db_metadata
-        from dateutil.zoneinfo import rebuild
+        from europarse.zoneinfo import gettz
+        from europarse.zoneinfo import gettz_db_metadata
+        from europarse.zoneinfo import rebuild
 
         zi_all = (gettz, gettz_db_metadata, rebuild)
 

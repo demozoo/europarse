@@ -5,7 +5,7 @@ from ._common import unittest, WarningTestMixin
 import calendar
 from datetime import datetime, date
 
-from dateutil.relativedelta import *
+from europarse.relativedelta import *
 
 class RelativeDeltaTest(WarningTestMixin, unittest.TestCase):
     now = datetime(2003, 9, 17, 20, 54, 47, 282310)

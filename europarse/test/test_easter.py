@@ -1,5 +1,5 @@
-from dateutil.easter import easter
-from dateutil.easter import EASTER_WESTERN, EASTER_ORTHODOX, EASTER_JULIAN
+from europarse.easter import easter
+from europarse.easter import EASTER_WESTERN, EASTER_ORTHODOX, EASTER_JULIAN
 
 from datetime import date
 

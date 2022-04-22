@@ -497,7 +497,7 @@ class tzrange(datetime.tzinfo):
                  start=None, end=None):
         global relativedelta
         if not relativedelta:
-            from dateutil import relativedelta
+            from europarse import relativedelta
         self._std_abbr = stdabbr
         self._dst_abbr = dstabbr
         if stdoffset is not None:
@@ -579,7 +579,7 @@ class tzstr(tzrange):
     def __init__(self, s):
         global parser
         if not parser:
-            from dateutil import parser
+            from europarse import parser
         self._s = s
 
         res = parser._parsetz(s)
@@ -732,7 +732,7 @@ class tzical(object):
     def __init__(self, fileobj):
         global rrule
         if not rrule:
-            from dateutil import rrule
+            from europarse import rrule
 
         if isinstance(fileobj, string_types):
             self._s = fileobj
@@ -958,7 +958,7 @@ def gettz(name=None):
                     except WindowsError:
                         tz = None
                 if not tz:
-                    from dateutil.zoneinfo import gettz
+                    from europarse.zoneinfo import gettz
                     tz = gettz(name)
                 if not tz:
                     for c in name:
