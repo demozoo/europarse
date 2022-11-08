@@ -13,8 +13,6 @@ import time
 import sys
 import os
 
-from six import string_types, PY3
-
 try:
     from .win import tzwin, tzwinlocal
 except ImportError:
@@ -199,7 +197,7 @@ class tzfile(datetime.tzinfo):
 
     def __init__(self, fileobj, filename=None):
         file_opened_here = False
-        if isinstance(fileobj, string_types):
+        if isinstance(fileobj, str):
             self._filename = fileobj
             fileobj = open(fileobj, 'rb')
             file_opened_here = True
@@ -727,7 +725,7 @@ class tzical(object):
         if not rrule:
             from europarse import rrule
 
-        if isinstance(fileobj, string_types):
+        if isinstance(fileobj, str):
             self._s = fileobj
             # ical should be encoded in UTF-8 with CRLF
             fileobj = open(fileobj, 'r')

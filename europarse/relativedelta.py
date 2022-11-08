@@ -5,7 +5,6 @@ import calendar
 import operator
 from math import copysign
 
-from six import integer_types
 from warnings import warn
 
 __all__ = ["relativedelta", "MO", "TU", "WE", "TH", "FR", "SA", "SU"]
@@ -214,7 +213,7 @@ class relativedelta(object):
                      "errors in future versions.", DeprecationWarning)
 
 
-            if isinstance(weekday, integer_types):
+            if isinstance(weekday, int):
                 self.weekday = weekdays[weekday]
             else:
                 self.weekday = weekday

@@ -35,9 +35,7 @@ import time
 import collections
 import re
 from io import StringIO
-from calendar import monthrange, isleap
-
-from six import text_type, binary_type, integer_types
+from calendar import monthrange
 
 from . import relativedelta
 from . import tz
@@ -50,10 +48,10 @@ class _timelex(object):
     _split_decimal = re.compile("([\.,])")
 
     def __init__(self, instream):
-        if isinstance(instream, binary_type):
+        if isinstance(instream, bytes):
             instream = instream.decode()
 
-        if isinstance(instream, text_type):
+        if isinstance(instream, str):
             instream = StringIO(instream)
 
         self.instream = instream
@@ -584,9 +582,9 @@ class parser(object):
 
                 if isinstance(tzdata, datetime.tzinfo):
                     tzinfo = tzdata
-                elif isinstance(tzdata, text_type):
+                elif isinstance(tzdata, str):
                     tzinfo = tz.tzstr(tzdata)
-                elif isinstance(tzdata, integer_types):
+                elif isinstance(tzdata, int):
                     tzinfo = tz.tzoffset(res.tzname, tzdata)
                 else:
                     raise ValueError("Offset must be tzinfo subclass, "

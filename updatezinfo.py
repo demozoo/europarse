@@ -3,9 +3,8 @@ import os
 import hashlib
 import json
 import io
-
-from six.moves.urllib import request
-from six.moves.urllib import error as urllib_error
+from urllib.error import URLError
+from urllib import request
 
 from europarse.zoneinfo import rebuild
 
@@ -29,7 +28,7 @@ def main():
                 request.urlretrieve(os.path.join(releases_url,
                                                  metadata['tzdata_file']),
                                     metadata['tzdata_file'])
-            except urllib_error.URLError as e:
+            except URLError as e:
                 print("Download failed, trying next mirror.")
                 last_error = e
                 continue

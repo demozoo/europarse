@@ -1,9 +1,7 @@
 # This code was originally contributed by Jeffrey Harris.
 import datetime
 import struct
-
-from six.moves import winreg
-from six import text_type
+import winreg
 
 try:
     import ctypes
@@ -198,7 +196,7 @@ class tzwin(tzwinbase):
 
         # multiple contexts only possible in 2.7 and 3.1, we still support 2.6
         with winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE) as handle:
-            tzkeyname = text_type("{kn}\{name}").format(kn=TZKEYNAME, name=name)
+            tzkeyname = str("{kn}\{name}").format(kn=TZKEYNAME, name=name)
             with winreg.OpenKey(handle, tzkeyname) as tzkey:
                 keydict = valuestodict(tzkey)
 
@@ -245,7 +243,7 @@ class tzwinlocal(tzwinbase):
             self._dstname = keydict["DaylightName"]
 
             try:
-                tzkeyname = text_type('{kn}\{sn}').format(kn=TZKEYNAME,
+                tzkeyname = str('{kn}\{sn}').format(kn=TZKEYNAME,
                                                           sn=self._stdname)
                 with winreg.OpenKey(handle, tzkeyname) as tzkey:
                     _keydict = valuestodict(tzkey)

@@ -31,8 +31,6 @@ A fork of dateutil.parser from before it broke the semantics of the
       packages=["europarse", "europarse.zoneinfo", "europarse.tz"],
       package_data={"europarse.zoneinfo": ["europarse-zoneinfo.tar.gz"]},
       zip_safe=True,
-      requires=["six"],
-      install_requires=["six >=1.5"],  # XXX fix when packaging is sane again
       classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Intended Audience :: Developers',

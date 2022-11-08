@@ -2,12 +2,10 @@
 from __future__ import unicode_literals
 import unittest
 
-from datetime import datetime, timedelta, date
+from datetime import datetime, timedelta
 
 from europarse.tz import tzoffset
 from europarse.parser import *
-
-from six import assertRaisesRegex, PY3
 
 class ParserTest(unittest.TestCase):
 
@@ -44,12 +42,6 @@ class ParserTest(unittest.TestCase):
                          datetime(2003, 9, 25, 10, 36, 28,
                                   tzinfo=self.brsttz))
 
-    def testDateCommandFormatWithLong(self):
-        if not PY3:
-            self.assertEqual(parse("Thu Sep 25 10:36:28 BRST 2003",
-                                   tzinfos={"BRST": long(-10800)}),
-                             datetime(2003, 9, 25, 10, 36, 28,
-                                      tzinfo=self.brsttz))
     def testDateCommandFormatIgnoreTz(self):
         self.assertEqual(parse("Thu Sep 25 10:36:28 BRST 2003",
                                ignoretz=True),
@@ -676,11 +668,11 @@ class ParserTest(unittest.TestCase):
                           parse, 'shouldfail')
 
     def testCorrectErrorOnFuzzyWithTokens(self):
-        assertRaisesRegex(self, ValueError, 'Unknown string format',
+        self.assertRaisesRegex(ValueError, 'Unknown string format',
                           parse, '04/04/32/423', fuzzy_with_tokens=True)
-        assertRaisesRegex(self, ValueError, 'Unknown string format',
+        self.assertRaisesRegex(ValueError, 'Unknown string format',
                           parse, '04/04/04 +32423', fuzzy_with_tokens=True)
-        assertRaisesRegex(self, ValueError, 'Unknown string format',
+        self.assertRaisesRegex(ValueError, 'Unknown string format',
                           parse, '04/04/0d4', fuzzy_with_tokens=True)
 
     def testIncreasingCTime(self):
