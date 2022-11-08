@@ -12,8 +12,6 @@ except ValueError:
     # ValueError is raised on non-Windows systems for some horrible reason.
     raise ImportError("Running tzwin on non-Windows system")
 
-from ._common import tzname_in_python2
-
 __all__ = ["tzwin", "tzwinlocal", "tzres"]
 
 ONEWEEK = datetime.timedelta(7)
@@ -154,7 +152,6 @@ class tzwinbase(datetime.tzinfo):
         else:
             return datetime.timedelta(0)
 
-    @tzname_in_python2
     def tzname(self, dt):
         if self._isdst(dt):
             return self._dstname

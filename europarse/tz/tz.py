@@ -14,7 +14,6 @@ import sys
 import os
 
 from six import string_types, PY3
-from ._common import tzname_in_python2
 
 try:
     from .win import tzwin, tzwinlocal
@@ -36,7 +35,6 @@ class tzutc(datetime.tzinfo):
     def dst(self, dt):
         return ZERO
 
-    @tzname_in_python2
     def tzname(self, dt):
         return "UTC"
 
@@ -65,7 +63,6 @@ class tzoffset(datetime.tzinfo):
     def dst(self, dt):
         return ZERO
 
-    @tzname_in_python2
     def tzname(self, dt):
         return self._name
 
@@ -107,7 +104,6 @@ class tzlocal(datetime.tzinfo):
         else:
             return ZERO
 
-    @tzname_in_python2
     def tzname(self, dt):
         return time.tzname[self._isdst(dt)]
 
@@ -466,7 +462,6 @@ class tzfile(datetime.tzinfo):
         # dst offset, so I belive that this wouldn't be the right
         # way to implement this.
 
-    @tzname_in_python2
     def tzname(self, dt):
         if not self._ttinfo_std:
             return None
@@ -536,7 +531,6 @@ class tzrange(datetime.tzinfo):
         else:
             return ZERO
 
-    @tzname_in_python2
     def tzname(self, dt):
         if self._isdst(dt):
             return self._dst_abbr
@@ -718,7 +712,6 @@ class _tzicalvtz(datetime.tzinfo):
         else:
             return ZERO
 
-    @tzname_in_python2
     def tzname(self, dt):
         return self._find_comp(dt).tzname
 
