@@ -20,4 +20,10 @@ from europarse.parser import parse
 
 parse("8th nov 2022")
 # => datetime.datetime(2022, 11, 8, 0, 0)
+parse("08/11/2022")
+# => datetime.datetime(2022, 8, 11, 0, 0)
+parse("08/11/2022", dayfirst=True)
+# => datetime.datetime(2022, 11, 8, 0, 0)
 ```
+
+For additional usage notes, see [the dateutil docs](https://dateutil.readthedocs.io/en/2.5.1/parser.html) - just replace `dateutil` in import lines with `europarse`.
