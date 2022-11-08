@@ -32,10 +32,14 @@ from __future__ import unicode_literals
 import datetime
 import string
 import time
-import collections
 import re
 from io import StringIO
 from calendar import monthrange
+
+try:
+    from collections.abc import Callable
+except ImportError:
+    from collections import Callable
 
 from . import relativedelta
 from . import tz
@@ -572,10 +576,10 @@ class parser(object):
             ret = ret+relativedelta.relativedelta(weekday=res.weekday)
 
         if not ignoretz:
-            if (isinstance(tzinfos, collections.Callable) or
+            if (isinstance(tzinfos, Callable) or
                     tzinfos and res.tzname in tzinfos):
 
-                if isinstance(tzinfos, collections.Callable):
+                if isinstance(tzinfos, Callable):
                     tzdata = tzinfos(res.tzname, res.tzoffset)
                 else:
                     tzdata = tzinfos.get(res.tzname)
